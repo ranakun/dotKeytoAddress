@@ -1,7 +1,8 @@
-const keyring = require("@polkadot/keyring");
+const {Keyring} = require("@polkadot/keyring");
 
-async function getAddressFromGroupKey(groupKey) {
+async function getDotAddressFromGroupKey(groupKey) {
     try {
+        const keyring = new Keyring({type: 'ed25519'});
         const address = keyring.encodeAddress("0x" + groupKey,0)
         console.log(`Public Key: 0x${groupKey}`);
         console.log(`Address: ${address.toString()}`);
